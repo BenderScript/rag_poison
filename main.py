@@ -2,7 +2,7 @@ import os
 
 import requests
 from dotenv import load_dotenv
-from top_100.extract_urls import html_table_to_list
+from top_100.extract_urls import ExtractUrls
 
 
 def check_url_with_google_safe_browsing(url, api_key):
@@ -40,12 +40,12 @@ def check_url_with_google_safe_browsing(url, api_key):
 
 def run():
     # Use the function
-    top_100_reference = "https://en.wikipedia.org/wiki/List_of_most-visited_websites"  # Replace with your URL
-    top_100_list = html_table_to_list(top_100_reference)
+    extract = ExtractUrls()
+    extract.html_table_to_list()
 
     load_dotenv(override=True, dotenv_path=".env")  # take environment variables from .env.
     api_key = os.getenv("GOOGLE_SAFE_BROWSING_API_KEY")
-    for u in top_100_list:
+    for u in extract.data_list:
         url = u.get('Domainname')
         # url = "http://malware.testing.google.test/testing/malware/"
         resp = check_url_with_google_safe_browsing(url, api_key)
