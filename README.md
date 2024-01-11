@@ -1,7 +1,13 @@
-# URL Safety Check Program
+# GenAI RAG Poison URL Safety Check Program
 
 ## Overview
-This Python program checks URLs for safety using the Google Safe Browsing API. It fetches a list of URLs from an HTML table and evaluates each for threats like malware, social engineering, unwanted software, and potentially harmful applications.
+This Python program checks URLs for safety using a few techniques:
+
+* the Google Safe Browsing API
+* Abuse.ch database
+
+For demo purposes it fetches the top 100 URLs from Wikipedia and evaluates each for threats like malware, social engineering, unwanted software, and potentially harmful applications.
+
 
 ## Features
 - Integration with Google Safe Browsing API.
@@ -15,11 +21,11 @@ This Python program checks URLs for safety using the Google Safe Browsing API. I
 ## Installation
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/your-repo-name.git
+   git clone https://github.com/BenderScript/rag_poison
    ```
 2. Navigate to the cloned directory:
    ```bash
-   cd your-repo-name
+   cd rag_poison
    ```
 3. Install required packages using `pip3`:
    ```bash

@@ -49,10 +49,13 @@ def run():
         url = u.get('Domainname')
         # url = "http://malware.testing.google.test/testing/malware/"
         resp = check_url_with_google_safe_browsing(url, api_key)
-        if resp:
-            print(f"{url} : {resp.get('matches')[0].get('threatType')}")
-        else:
+        if resp is None:
+            print(f"{url} : Communication error")
+        elif not resp:
             print(f"{url} : No threat found")
+        else:
+            print(f"{url} : {resp.get('matches')[0].get('threatType')}")
+
 
 
 run()
